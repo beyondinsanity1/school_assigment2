@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-const int gameCount = 10;
+const int gameCount = 5;
 string gameTitles[gameCount];
 int graphicScores[gameCount] = {1,2,3,4,5};
 int replayValue[gameCount] = {1,2,3,4,5};
