@@ -12,7 +12,7 @@ using namespace std;
 const int gameCount = 5;
 string gameTitles[gameCount];
 int graphicScores[gameCount] = {1,2,3,4,5};
-int replayValue[gameCount] = {1,2,3,4,5};
+int replayValue[gameCount] = {1,2,3,4,5,6};
 
 
 //shows game title and graphic score
