@@ -1,0 +1,3 @@
+/Users/Eren/Desktop/assigment_2_github/cmake-build-debug/CMakeFiles/github.dir
+/Users/Eren/Desktop/assigment_2_github/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Eren/Desktop/assigment_2_github/cmake-build-debug/CMakeFiles/rebuild_cache.dir
