@@ -57,29 +57,42 @@ int enterReplayInfo(){
 
 //figure out why gametitles[x] is out of bounds - how to fix it
 void getHighestGraphicScore(){
-    int highest;
+    int highestGraphic;
     int x;
-    highest = graphicScores[0];
-    string highest_game_title;
+    highestGraphic = graphicScores[0];
+    string HighestGraphicTitle;
     for (x = 1; x < gameCount; x++){
-        if (graphicScores[x] > highest){
-            highest = graphicScores[x];
-            highest_game_title = gameTitles[x];
+        if (graphicScores[x] > highestGraphic){
+            highestGraphic = graphicScores[x];
+            HighestGraphicTitle = gameTitles[x];
         }
-        cout << gameTitles[x]<<endl;
     }
-    cout << x <<endl;
-    cout << highest <<endl;
-    cout << "The highest rated graphics game is "<< highest_game_title << " with a score of " << highest <<endl;
+    cout << "The highest rated graphics game is "<< HighestGraphicTitle << " with a score of " << highestGraphic <<endl;
 }
 
+
+//HighestReplayTitle is out of bounds - fix that
+void getHighestReplayScore(){
+    int highestReplay;
+    int x;
+    highestReplay = replayValue[0];
+    string HighestReplayTitle;
+    for (x = 1; x < gameCount; x++){
+        if (replayValue[x] > highestReplay){
+            highestReplay = replayValue[x];
+            HighestReplayTitle = gameTitles[x];
+        }
+    }
+    cout << "The highest rated graphics game is "<< HighestReplayTitle << " with a score of " << highestReplay <<endl;
+}
 
 int main(){
     enterGameInfo();
     enterGraphicInfo();
     showGraphicScores();
-//    enterReplayInfo();
-//    showReplayScores();
     getHighestGraphicScore();
+    enterReplayInfo();
+    showReplayScores();
+    getHighestReplayScore();
     return 0;
 }
