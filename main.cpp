@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <printf.h>
 using namespace std;
 
 const int gameCount = 5;
@@ -56,31 +57,21 @@ int enterReplayInfo(){
 
 //figure out why gametitles[x] is out of bounds - how to fix it
 void getHighestGraphicScore(){
-    int x = 0;
     int highest;
+    int x;
     highest = graphicScores[0];
-    for (x = 0;x < gameCount; x++){
+    string highest_game_title;
+    for (x = 1; x < gameCount; x++){
         if (graphicScores[x] > highest){
             highest = graphicScores[x];
+            highest_game_title = gameTitles[x];
         }
-        cout << x <<endl;
+        cout << gameTitles[x]<<endl;
     }
-    cout << "The highest rated graphics game is "<< gameTitles[x] << " with a score of " << highest <<endl;
+    cout << x <<endl;
+    cout << highest <<endl;
+    cout << "The highest rated graphics game is "<< highest_game_title << " with a score of " << highest <<endl;
 }
-
-////creating the sequential search algorithm
-//int getSpecificScore(){
-//    bool found;
-//    int x = 0;
-//    while (found == 0 && index < gameCount){
-//        if (graphicScores[x] == 5){
-//            found = true;
-//        }
-//        else{
-//            x++;
-//        }
-//    }
-//}
 
 
 int main(){
