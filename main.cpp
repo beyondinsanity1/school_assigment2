@@ -55,7 +55,6 @@ int enterReplayInfo(){
 }
 
 
-//figure out why gametitles[x] is out of bounds - how to fix it
 void getHighestGraphicScore(){
     int highestGraphic;
     int x;
