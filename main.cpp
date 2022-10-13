@@ -1,13 +1,6 @@
-//
-//  main.cpp
-//  assigment_2
-//
-//  Created by Eren Sonmez on 10/5/22.
-//
 
 #include <iostream>
 #include <string>
-#include <printf.h>
 using namespace std;
 
 const int gameCount = 5;
@@ -15,20 +8,6 @@ string gameTitles[gameCount];
 int graphicScores[gameCount] = {1,2,3,4,5};
 int replayValue[gameCount] = {1,2,3,4,5};
 
-
-//shows game title and graphic score
-void showGraphicScores(){
-    for (int i = 0; i < gameCount; ++i) {
-        cout << gameTitles[i] << " : " << graphicScores[i] <<endl;
-    }
-}
-
-//shows game title and graphic score
-void showReplayScores(){
-    for (int i = 0; i < gameCount; ++i) {
-        cout << gameTitles[i] << " : " << replayValue[i] <<endl;
-    }
-}
 
 int enterGameInfo() {
     for (int x = 0; x < gameCount; x++){
@@ -46,6 +25,13 @@ int enterGraphicInfo(){
     return 0;
 }
 
+//shows game title and graphic scores for debugging
+void showGraphicScores(){
+    for (int i = 0; i < gameCount; ++i) {
+        cout << gameTitles[i] << " : " << graphicScores[i] <<endl;
+    }
+}
+
 int enterReplayInfo(){
     for (int x = 0; x < gameCount; x++){
         cout << "Enter the replay value on a scale of 1 to 5, for " << gameTitles[x] <<":"<<endl;
@@ -53,45 +39,77 @@ int enterReplayInfo(){
     }
     return 0;
 }
-
-
-void getHighestGraphicScore(){
-    int highestGraphic;
-    int x;
-    highestGraphic = graphicScores[0];
-    string HighestGraphicTitle;
-    for (x = 1; x < gameCount; x++){
-        if (graphicScores[x] > highestGraphic){
-            highestGraphic = graphicScores[x];
-            HighestGraphicTitle = gameTitles[x];
-        }
+//shows game title and graphic scores for debugging
+void showReplayScores(){
+    for (int i = 0; i < gameCount; ++i) {
+        cout << gameTitles[i] << " : " << replayValue[i] <<endl;
     }
-    cout << "The highest rated graphics game is "<< HighestGraphicTitle << " with a score of " << highestGraphic <<endl;
 }
 
-
-//HighestReplayTitle is out of bounds - fix that
-void getHighestReplayScore(){
-    int highestReplay;
-    int x;
-    highestReplay = replayValue[0];
-    string HighestReplayTitle;
-    for (x = 1; x < gameCount; x++){
-        if (replayValue[x] > highestReplay){
-            highestReplay = replayValue[x];
-            HighestReplayTitle = gameTitles[x];
+void getHighestGraphic(){
+    int highestGraphic = 0;
+    string highestGraphicTitle;
+    for(int x = 0; x <gameCount; x++ ){
+        if(graphicScores[x] > highestGraphic){
+            highestGraphic = graphicScores[x];
+            highestGraphicTitle = gameTitles[x];
+        }else if(graphicScores[x] == highestGraphic){
+            highestGraphicTitle = gameTitles[x];
         }
     }
-    cout << "The highest rated graphics game is "<< HighestReplayTitle << " with a score of " << highestReplay <<endl;
+    cout << "The highest rated graphics game is " <<highestGraphicTitle << " with a score of " << highestGraphic <<endl;
+}
+
+void getHighestReplay(){
+    int highestReplay = 0;
+    string highestReplayTitle;
+    for(int x = 0; x <gameCount; x++ ){
+
+        if(replayValue[x] > highestReplay){
+
+            highestReplay = replayValue[x];
+            highestReplayTitle = gameTitles[x];
+
+        } else if(replayValue[x] == highestReplay){
+
+            highestReplayTitle = gameTitles[x];
+        }
+    }
+
+    cout << "The highest rated replay game is " <<highestReplayTitle << " with a score of " << highestReplay <<endl;
+}
+
+void getHighestCombined(){
+    int combinedScore[gameCount];
+    int highestCombined = 0;
+    string highestCombinedTitle;
+
+    for(int x = 0; x <gameCount; x++ ){
+
+        combinedScore[x] = replayValue[x] + graphicScores[x];
+        cout << combinedScore[x] <<endl;
+    }
+
+    for(int x = 0; x <gameCount; x++ ){
+
+        if( combinedScore[x] > highestCombined){
+
+            highestCombined = combinedScore[x];
+            highestCombinedTitle = gameTitles[x];
+
+        }else if (combinedScore[x] == highestCombined){
+
+            highestCombinedTitle = gameTitles[x];
+        }
+    }
+    cout<< "The highest rated combined score game is " << highestCombinedTitle << " with a score of " << highestCombined <<endl;
 }
 
 int main(){
     enterGameInfo();
     enterGraphicInfo();
-    showGraphicScores();
-    getHighestGraphicScore();
+    getHighestGraphic();
     enterReplayInfo();
-    showReplayScores();
-    getHighestReplayScore();
-    return 0;
+    getHighestReplay();
+    getHighestCombined();
 }
