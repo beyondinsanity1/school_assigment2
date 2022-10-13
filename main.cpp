@@ -16,9 +16,16 @@ int replayValue[gameCount] = {1,2,3,4,5};
 
 
 //shows game title and graphic score
-void showGameTitles(){
+void showGraphicScores(){
     for (int i = 0; i < gameCount; ++i) {
         cout << gameTitles[i] << " : " << graphicScores[i] <<endl;
+    }
+}
+
+//shows game title and graphic score
+void showReplayScores(){
+    for (int i = 0; i < gameCount; ++i) {
+        cout << gameTitles[i] << " : " << replayValue[i] <<endl;
     }
 }
 
@@ -46,9 +53,32 @@ int enterReplayInfo(){
     return 0;
 }
 
-//int getHighestGraphics(){
-//    for(int x = 0; x < gameCount; x++){
-//
+
+//figure out why gametitles[x] is out of bounds - how to fix it
+void getHighestGraphicScore(){
+    int x = 0;
+    int highest;
+    highest = graphicScores[0];
+    for (x = 0;x < gameCount; x++){
+        if (graphicScores[x] > highest){
+            highest = graphicScores[x];
+        }
+        cout << x <<endl;
+    }
+    cout << "The highest rated graphics game is "<< gameTitles[x] << " with a score of " << highest <<endl;
+}
+
+////creating the sequential search algorithm
+//int getSpecificScore(){
+//    bool found;
+//    int x = 0;
+//    while (found == 0 && index < gameCount){
+//        if (graphicScores[x] == 5){
+//            found = true;
+//        }
+//        else{
+//            x++;
+//        }
 //    }
 //}
 
@@ -56,7 +86,9 @@ int enterReplayInfo(){
 int main(){
     enterGameInfo();
     enterGraphicInfo();
-    showGameTitles();
-    enterReplayInfo();
+    showGraphicScores();
+//    enterReplayInfo();
+//    showReplayScores();
+    getHighestGraphicScore();
     return 0;
 }
