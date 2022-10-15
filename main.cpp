@@ -7,6 +7,7 @@ const int gameCount = 5;
 string gameTitles[gameCount];
 int graphicScores[gameCount] = {1,2,3,4,5};
 int replayValue[gameCount] = {1,2,3,4,5};
+bool firstTimeMenu = true;
 
 
 int enterGameInfo() {
@@ -87,7 +88,8 @@ void getHighestCombined(){
     for(int x = 0; x <gameCount; x++ ){
 
         combinedScore[x] = replayValue[x] + graphicScores[x];
-        cout << combinedScore[x] <<endl;
+//        prints combined scores
+//        cout << combinedScore[x] << endl;
     }
 
     for(int x = 0; x <gameCount; x++ ){
@@ -105,11 +107,64 @@ void getHighestCombined(){
     cout<< "The highest rated combined score game is " << highestCombinedTitle << " with a score of " << highestCombined <<endl;
 }
 
+void menu(){
+    int userChoice;
+    if (firstTimeMenu == true) {
+        cout
+                << "Welcome! Select the action you want from the menu! \n Make sure to select '1' as your first action for an accurate calculation!"
+                << endl;
+        cout << "1. Enter Game Titles\n"
+                "2. Enter Graphic Scores\n"
+                "3. Enter Replay Scores\n"
+                "4. Find the highest graphic score\n"
+                "5. Find the highest replay value score\n"
+                "6. Find the highest combined score\n"
+                "7. Exit" << endl;
+        firstTimeMenu = false;
+
+
+    }else if (firstTimeMenu == false){
+        cout<< "================================\n"
+               "Please select the next action you want to execute!" << endl;
+
+        cout << "1. Enter Game Titles\n"
+                "2. Enter Graphic Scores\n"
+                "3. Enter Replay Scores\n"
+                "4. Find the highest graphic score\n"
+                "5. Find the highest replay value score\n"
+                "6. Find the highest combined score\n"
+                "7. Exit" << endl;
+    }
+    cin>>userChoice;
+    cin.ignore(1,'\n');
+    if (userChoice ==1){
+        enterGameInfo();
+        menu();
+    }else if (userChoice == 2){
+        enterGraphicInfo();
+        menu();
+    }else if (userChoice == 3){
+        enterReplayInfo();
+        menu();
+    }else if (userChoice == 4){
+        getHighestGraphic();
+        menu();
+    }else if (userChoice == 5){
+        getHighestReplay();
+        menu();
+    }else if (userChoice == 6){
+        getHighestCombined();
+        menu();
+    }else if (userChoice == 7){
+        return;
+    }else{
+        cout<< "Can't find that action! Please try a different number!" <<endl;
+        menu();
+    }
+
+
+}
+
 int main(){
-    enterGameInfo();
-    enterGraphicInfo();
-    getHighestGraphic();
-    enterReplayInfo();
-    getHighestReplay();
-    getHighestCombined();
+    menu();
 }
